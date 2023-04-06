@@ -72,7 +72,7 @@ function drop() {
     }
     else
     {
-        result.textContent = draggedWord.innerHTML+' do not include '+this.querySelector('.nhomthuoc').innerHTML;
+        result.textContent = this.querySelector('.nhomthuoc').innerHTML+' do not include '+draggedWord.innerHTML;
         message.style.display = "block";
 
 
