@@ -72,7 +72,7 @@ function drop() {
     }
     else
     {
-        result.textContent = draggedWord.innerHTML+' không thuộc nhóm '+this.querySelector('.nhomthuoc').innerHTML;
+        result.textContent = draggedWord.innerHTML+' Not belong to the group '+this.querySelector('.nhomthuoc').innerHTML;
         message.style.display = "block";
 
 
