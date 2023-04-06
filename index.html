@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+	<title>Game</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="toastr.min.js" defer></script>
+    <script src="drug-groups.js" defer></script>
+    <link rel="stylesheet" href="toastr.min.css" />
+
+</head>
+<body>
+	<div class="container">
+		<h1 id="h1">Write the following medicines under the correct heading:</h1>
+		<div class="row">
+			<div class="column" id="column1">
+                <div class="nhomthuoc">Pain relievers</div>
+                <div class="tenthuoc"> </div>
+            </div>
+			<div class="column" id="column2">
+                <div class="nhomthuoc">Antihistamines</div>
+                <div class="tenthuoc"> </div>
+            </div>
+			<div class="column" id="column3">
+                <div class="nhomthuoc">Decongestants</div>
+                <div class="tenthuoc"> </div>
+            </div>
+            <div class="column" id="column4">
+                <div class="nhomthuoc">Cough medicines</div>
+                <div class="tenthuoc"> </div>
+            </div>
+
+		</div>
+		<h1 id="h1">Medicines</h1>
+		<div class="row" id="vocabularies">
+            
+		</div>
+	</div>
+    <div id="message">
+        <div class="text-error">Không ổn rồi đại vương ơi</div>
+        <h2 id="result"></h2>
+        <button id="closeButton">Đóng</button>
+    </div>
+</body>
+</html>
+<style>
+    * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.column {
+	flex: 1;
+	height: 500px;
+    width: 500px;
+	margin-right: 20px;
+	padding: 20px;
+	border-radius: 20px;
+	background-color: #efefef;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.nhomthuoc {
+    color: #8da1bf;
+    font-size: 3.2rem;
+    font-weight: 500;
+    padding :20px 27px;
+    display: block;
+    text-align: center;
+    justify-content: space-between;
+}
+.tenthuoc {
+  background-color: #e8ecef;
+  margin-top: 20px;
+  overflow: auto;
+  justify-content: space-between;
+  width: 100%;
+  /* height: 100%; */
+}
+.word {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgb(165, 205, 219);
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  color: #333;
+  box-shadow: 0 0 5px #ccc;
+  
+}
+
+.word:hover {
+  background-color: #333;
+  color: white;
+  box-shadow: 0 0 10px #333;
+}
+#h1 {
+    color: #8da1bf;
+    font-size: 3.2rem;
+}
+#message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(219 246 255);
+    border: 2px solid black;
+    border-radius: 22px;
+    padding: 20px;
+    text-align: center;
+    display: none;
+    z-index: 9999;
+    width: 600px;
+    height: 400px;
+}
+.text-error {
+	background-color: #efefef;
+    color: #8da1bf;
+    font-size: 2rem;
+    width: auto;
+
+}
+#result {
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    text-align: left;
+}
+#closeButton {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute; /* Đặt nút đóng ở vị trí tuyệt đối */
+    bottom: 10px; /* Đặt nút đóng ở góc dưới bên phải */
+    right: 10px;
+}
+
+</style>
