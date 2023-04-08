@@ -7,6 +7,8 @@ let vocabularies = [
 ];
 let vocabulariesDiv = document.getElementById("vocabularies");
 
+shuffle(vocabularies);
+
 for (let i = 0;i<vocabularies.length;i++)
 {
     let word = document.createElement('div');
@@ -15,6 +17,23 @@ for (let i = 0;i<vocabularies.length;i++)
     word.setAttribute('draggable', 'true');
     word.innerHTML=vocabularies[i];
     vocabulariesDiv.appendChild(word);
+}
+function shuffle(array)
+{
+    let currentIndex = array.length;
+    let templearrayValue,randomIndex;
+
+    while(0!==currentIndex)
+    {
+        randomIndex=Math.floor(Math.random()*currentIndex);
+        currentIndex-=1;
+
+        templearrayValue=array[currentIndex];
+        array[currentIndex]=array[randomIndex];
+        array[randomIndex]=templearrayValue;
+    }
+    return array;
+
 }
 const groupWord = [  {    name: 'Pain relievers',    words: ['Aspirin','Ibuprofen','Naproxen','Tylenol',
 'Tempra','Excedrin']
@@ -69,6 +88,23 @@ function drop() {
     {
         console.log(this.querySelector('.nhomthuoc').innerHTML);
         this.querySelector('.tenthuoc').appendChild(draggedWord);
+        //console.log(draggedWord);
+        let indexOfDragword = vocabularies.indexOf(draggedWord.innerHTML);
+        if(indexOfDragword!==-1)
+        {
+            vocabularies.splice(indexOfDragword,1);
+        }
+        //console.log(vocabularies);
+        if(vocabularies.length===0)
+        {
+            const congrate = document.getElementById("congrate");
+            congrate.style.display='block';
+            const vid = document.getElementById('vid');
+            vid.requestFullscreen()
+            //vid.autoplay = true;
+
+            
+        }
     }
     else
     {
@@ -106,3 +142,16 @@ function closeMessage() {
     message.style.display = "none";
 }
 closeButton.addEventListener("click", closeMessage);
+// Listen for fullscreen change event
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange); // Safari
+
+function handleFullscreenChange() {
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    // Video is in fullscreen, show it
+    vid.style.display = 'block';
+  } else {
+    // Video is not in fullscreen, hide it
+    vid.style.display = 'none';
+  }
+}
